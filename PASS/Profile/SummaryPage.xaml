@@ -1,0 +1,38 @@
+﻿<Page x:Class="PASS.Profile.SummaryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PASS.Profile"
+      mc:Ignorable="d" 
+      
+      Title="SummaryPage">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Content="Přehled profilu" Style="{StaticResource labelHeaderStyle}" Grid.Row="0"></Label>
+            <Label Content="Přihlášený uživatel" Style="{StaticResource labelH2}" Grid.Row="1" Margin="10 10 10 0" x:Name="lbUser" />
+            <StackPanel Grid.Row="2" Style="{StaticResource stackPanelStyle}" HorizontalAlignment="Left" MaxWidth="500" Width="{Binding ElementName=lbUser,Path=ActualWidth}">
+
+
+
+                
+                    <DockPanel>
+                        <Label Content="Jméno uživatele: " Width="120" FontWeight="Medium"></Label>
+                        <Label x:Name="lbUsername" Content="nepřihlášený uživatel"></Label>
+                    </DockPanel>
+                    <DockPanel>
+                        <Label Content="Role uživatele: " Width="120" FontWeight="Medium"></Label>
+                        <Label x:Name="lbUserRole" Content="nepřiřazená role"></Label>
+
+                    </DockPanel>
+               
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

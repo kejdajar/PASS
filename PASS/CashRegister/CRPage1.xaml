@@ -1,0 +1,191 @@
+﻿<Page x:Class="PASS.CashRegister.CRPage1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PASS.CashRegister"    
+      xmlns:user="clr-namespace:PASS.UserControls"
+      mc:Ignorable="d" 
+     
+      Title="CRPage1" x:Name="page1" >
+    <Page.Resources>
+        <Style x:Key="buttonStyleSimpleGreen" TargetType="{x:Type Button}">
+
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" BorderBrush="Black" BorderThickness="1" Padding="3">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,3">
+                                        <GradientStop Color="White" Offset="0.0"/>
+                                        <GradientStop Color="#FF81CF70" Offset="0.6"/>
+                                        <GradientStop Color="White" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         TextElement.FontWeight="Regular"></ContentPresenter>
+                            </Border>
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,3">
+                                            <GradientStop Color="White" Offset="0.0"/>
+                                            <GradientStop Color="#FFE4E091" Offset="0.6"/>
+                                            <GradientStop Color="White" Offset="1.0"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,3">
+                                            <GradientStop Color="White" Offset="0.0"/>
+                                            <GradientStop Color="#FFB9B673" Offset="0.6"/>
+                                            <GradientStop Color="White" Offset="1.0"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="buttonStyleSimple" TargetType="{x:Type Button}">
+
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" BorderBrush="Black" BorderThickness="1" Padding="3">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,3">
+                                        <GradientStop Color="White" Offset="0.0"/>
+                                        <GradientStop Color="#FFC1C1B9" Offset="0.6"/>
+                                        <GradientStop Color="White" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         TextElement.FontWeight="Regular"></ContentPresenter>
+                            </Border>
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,3">
+                                            <GradientStop Color="White" Offset="0.0"/>
+                                            <GradientStop Color="#FFE4E091" Offset="0.6"/>
+                                            <GradientStop Color="White" Offset="1.0"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,3">
+                                            <GradientStop Color="White" Offset="0.0"/>
+                                            <GradientStop Color="#FFB9B673" Offset="0.6"/>
+                                            <GradientStop Color="White" Offset="1.0"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" MinWidth="350"></ColumnDefinition>
+            <ColumnDefinition Width="1*" MinWidth="150"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Viewbox Stretch="Uniform" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="15 52 15 15" x:Name="wb1">
+
+            <StackPanel  Orientation="Vertical" TextElement.FontSize="25"  >
+                <user:Numpad x:Name="numpad" Margin="0 0 0 0"></user:Numpad>
+
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 0" >
+                    <Button Content="Platba" Width="150" Height="50" Background="LightGreen" x:Name="btnPay" Click="btnPay_Click" IsEnabled="{Binding ElementName=lbProducts,Path=Items.Count}" Style="{StaticResource buttonStyleSimpleGreen}"></Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 0 " Height="50">
+                    <Button x:Name="btnStorno" Click="btnStorno_Click" Width="50" Height="50" Style="{StaticResource buttonStyleSimple}">
+                        <StackPanel>
+                            <Image Source="../Images/shoppingCartIconDisabled.png" Width="40" Height="40" ToolTip="Vynulovat nákup"  />
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="btnRemove" Click="btnRemove_Click" Width="50" Height="50" Style="{StaticResource buttonStyleSimple}">
+                        <StackPanel>
+                            <Image Source="../Images/trashCanIcon.png"  Width="40" Height="40" ToolTip="Odstranit položku" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Viewbox>
+
+        <Grid Margin="15 15 15 15" TextElement.FontSize="20" MaxWidth="600">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="38"></RowDefinition>
+                <RowDefinition Height="35"></RowDefinition>
+                <RowDefinition Height="38"></RowDefinition>
+                <RowDefinition Height="35"></RowDefinition>
+                <RowDefinition Height="38"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="38"></RowDefinition>
+                <RowDefinition Height="35"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Content="Kód zboží" Grid.Row="0" x:Name="lblCode"></Label>
+            <TextBox x:Name="tbProductCode" GotFocus="tbProductCode_GotFocus"  Grid.Row="1" FontSize="22"></TextBox>
+
+            <Label x:Name="lblQuantity" Content="Množství" Grid.Row="2"></Label>
+            <TextBox x:Name="tbQuantity" IsEnabled="False" GotFocus="tbQuantity_GotFocus"  Grid.Row="3" FontSize="22"></TextBox>
+
+            <Label Content="Přidané zboží" Grid.Row="4" ></Label>
+            <ListBox x:Name="lbProducts"  GotFocus="lbProducts_GotFocus" Grid.Row="5" FontSize="17" ></ListBox>
+
+            <Label Content="Mezisoučet" Grid.Row="6"></Label>
+            <TextBox IsEnabled="False" x:Name="tbPrice" TextAlignment="Right"  Grid.Row="7" FontSize="22" ></TextBox>
+
+        </Grid>
+
+    </Grid>
+</Page>

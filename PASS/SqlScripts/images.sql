@@ -1,0 +1,4 @@
+﻿CREATE TABLE ImagesTable (id INT PRIMARY KEY IDENTITY(1,1),name NCHAR(100) not null,img IMAGE not null)
+CREATE TABLE ProductImages (id INT PRIMARY KEY IDENTITY(1,1),idProduct INT,idImage INT)
+ALTER TABLE ProductImages ADD CONSTRAINT fk_idProduct FOREIGN KEY (idProduct) REFERENCES Products(id) ON DELETE CASCADE
+ALTER TABLE ProductImages ADD CONSTRAINT fk_idImage FOREIGN KEY (idImage) REFERENCES ImagesTable(id) ON DELETE CASCADE

@@ -1,0 +1,45 @@
+﻿<Window x:Class="PASS.Storage.UnitManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PASS.Storage"
+        mc:Ignorable="d"
+        Title="Správce jednotek" ResizeMode="NoResize" SizeToContent="WidthAndHeight" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Content="Správce jednotek" Style="{StaticResource labelH2}" Grid.Row="0"></Label>
+        <StackPanel Orientation="Vertical"  Style="{StaticResource stackPanelStyle}" Width="300" Grid.Row="1">
+        
+
+            <GroupBox Header="Existující jednotky">
+            <StackPanel>  
+            
+                    <DockPanel>
+                         <ListBox x:Name="lbUnits" MaxHeight="120" Height="120"></ListBox>
+                    </DockPanel>
+                
+                    <DockPanel>
+                        <Button x:Name="btnUnitRemove" Content="Odebrat jednotku" Click="btnUnitRemove_Click" Style="{StaticResource buttonStyle}" IsEnabled="{Binding ElementName=lbUnits,Path=SelectedItems.Count}"></Button>
+                    </DockPanel>
+              </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Nová jednotka">
+                <StackPanel>
+                    <DockPanel>
+                        <Label  Content="Jméno jednotky" Width="120"></Label>
+                        <TextBox x:Name="tbUnitName"></TextBox>
+                    </DockPanel>
+                    <DockPanel>
+                        <Button Content="Přidat jednotku" x:Name="btnUnitAdd" Click="btnUnitAdd_Click" Style="{StaticResource buttonStyle}" IsEnabled="{Binding ElementName=tbUnitName,Path=Text.Length}"></Button>
+                    </DockPanel>
+                </StackPanel>
+            </GroupBox>
+            
+        </StackPanel>
+    </Grid>
+</Window>

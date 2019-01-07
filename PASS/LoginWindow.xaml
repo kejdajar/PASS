@@ -1,0 +1,42 @@
+﻿<Window x:Class="PASS.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PASS"
+        mc:Ignorable="d"
+        Title="Přihlášení" SizeToContent="WidthAndHeight" Closed="Window_Closed" ShowInTaskbar="False" ResizeMode="NoResize" >
+    <Grid >
+        <StackPanel Orientation="Vertical" Width="300" Style="{StaticResource stackPanelStyle}" >
+            <DockPanel Height="80"  Margin="0 0 0 0" >
+                <Image Source="Images/passLogo2.png"  />
+                
+            </DockPanel>
+            <DockPanel Margin="0 0 0 0">
+                    <Label Content="Pokladní a skladový systém" HorizontalAlignment="Center" FontSize="14" FontStyle="Italic"></Label>
+                </DockPanel>
+            <DockPanel> <Label x:Name="label" Content="Přihlášení"  FontSize="20"   Style="{StaticResource labelH2}"/></DockPanel>
+
+            <DockPanel >
+                <Label  x:Name="lblUsername"  Content="Uživatelské jméno" Width="130" />
+                <TextBox x:Name="tbUsername"    />
+            </DockPanel>
+
+            <DockPanel >
+                <Label x:Name="lblPassword" Content="Heslo" Width="130" />
+                <PasswordBox x:Name="tbPassword"  />
+            </DockPanel>
+            <DockPanel>
+                <Button x:Name="btnLogin" Content="Přihlásit se"  IsDefault="True" Click="btnLogin_Click" Style="{StaticResource buttonStyle}"/>
+            </DockPanel>
+            <DockPanel>
+                <Button x:Name="btnSettings" Content="Nastavení"  Click="btnSettings_Click"   Style="{StaticResource buttonStyle}" />
+            </DockPanel>
+            <DockPanel>
+                <Button x:Name="btnEnd" Content="Ukončit program"  Click="btnEnd_Click"  Style="{StaticResource buttonStyle}" />
+
+            </DockPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

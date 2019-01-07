@@ -1,0 +1,30 @@
+﻿<Page x:Class="PASS.Profile.OtherSettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PASS.Profile"
+      mc:Ignorable="d" 
+     
+      Title="OtherSettingsPage">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Content="Další nastavení" Style="{StaticResource labelHeaderStyle}" Grid.Row="0"></Label>
+            <Label Style="{StaticResource labelH2}" Content="Odhlášení" Grid.Row="1" Margin="10 10 10 0" x:Name="lblLogOut"></Label>
+            <StackPanel Style="{StaticResource stackPanelStyle}" MaxWidth="500" HorizontalAlignment="Left" Width="{Binding ElementName=lblLogOut,Path=ActualWidth}" Grid.Row="2">
+
+                <StackPanel >
+                    <DockPanel>
+                        <Button Content="Odhlásit se" x:Name="btnLogout" Click="btnLogout_Click" Style="{StaticResource buttonStyle}" Width="160" HorizontalAlignment="Left"></Button>
+                    </DockPanel>
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

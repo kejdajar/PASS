@@ -1,0 +1,193 @@
+﻿<Window x:Class="PASS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PASS"
+        mc:Ignorable="d"
+        Title="PASS - Pokladní a skladový systém" Width="800" Height="600" WindowState="Maximized"  x:Name="w" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="auto" ></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" ></ColumnDefinition>
+            <ColumnDefinition  MinWidth="180" Width="180" x:Name="sideColumn" MaxWidth="400"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Rectangle  Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Fill="White">
+
+
+        </Rectangle>
+        <Rectangle Fill="#FFECECEC" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"></Rectangle>
+        <GridSplitter Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" HorizontalAlignment="Left" Width="1"></GridSplitter>
+
+        <Frame Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" x:Name="frMenuPanel" NavigationUIVisibility="Hidden" ></Frame>
+
+
+        <Menu Grid.Column="0" Grid.Row="0"   Background="White">
+            <Menu.Resources>
+                <Style TargetType="Image">
+                    <Setter Property="Height" Value="16" />
+                    <Setter Property="Width" Value="16" />
+                </Style>
+            </Menu.Resources>
+            <MenuItem Header="Soubor">
+                <MenuItem Header="Ukončit program" x:Name="menuBtnExitProgram" Click="menuBtnExitProgram_Click">
+                    <MenuItem.Icon>
+                        <Image Source="Images/logOut.png"   />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            
+            <MenuItem Header="Zobrazit">
+                <MenuItem Header="Menu" x:Name="menuDisplaySideMenu" IsCheckable="True" Checked="menuDisplaySideMenu_Checked" Unchecked="menuDisplaySideMenu_Unchecked" IsChecked="True">
+
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Uživatel">
+                <MenuItem Header="Odhlásit se" Click="btnLogout_Click" >
+                    <MenuItem.Icon>
+                        <Image Source="Images/signOut.png"  />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Nápověda">
+                <MenuItem Header="O programu" x:Name="menuAbout" Click="menuAbout_Click" >
+                    <MenuItem.Icon>
+                        <Image Source="Images/helpIcon.png"  />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+
+        <TabControl  Grid.Column="0" Grid.Row="1" Margin="0 5 0 0" x:Name="tabMenu"  BorderBrush="White" SelectionChanged="tabMenu_SelectionChanged" Background="#FFFAFAFA">
+
+            <TabItem x:Name="tabStorage" FontSize="15">
+                <TabItem.Header >
+                    <StackPanel Orientation="Horizontal">
+
+                        <Image Source="Images/storageIcon.png"  Width="20" Height="20"  />
+                        <Label Content="Sklad" FontSize="17" FontWeight="DemiBold" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Frame x:Name="frStorage" NavigationUIVisibility="Hidden"></Frame>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabCashRegister" >
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal" >
+
+                        <Image Source="Images/cashRegisterIcon.png"  Width="20" Height="20"  />
+                        <Label Content="Pokladna" FontSize="17" FontWeight="DemiBold" />
+                    </StackPanel>
+                </TabItem.Header>
+
+                <Grid>
+
+                    <Frame x:Name="cashRegisterFrame" NavigationUIVisibility="Hidden">
+
+                    </Frame>
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem x:Name="tabManagement" FontSize="15">
+                <TabItem.Header >
+                    <StackPanel Orientation="Horizontal">
+
+                        <Image Source="Images/managementIcon.png"  Width="20" Height="20"  />
+                        <Label Content="Management" FontSize="17" FontWeight="DemiBold" />
+                    </StackPanel>
+                </TabItem.Header>
+
+
+              
+                    <Grid Background="White">
+                    <TabControl BorderThickness="1 0 0 0" Background="White" BorderBrush="Gray"  Padding="5 5 5 5" TabStripPlacement="Left" Margin="10 10 10 0" x:Name="tabControlManagement" SelectionChanged="tabControlManagement_SelectionChanged">
+                            <TabItem Width="200" Padding="5 5 5 5" x:Name="tabManagementSummary">
+                                <TabItem.Header>
+                                    <TextBlock FontWeight="Bold" FontSize="15">PŘEHLED</TextBlock>
+                                </TabItem.Header>
+
+                            <Frame x:Name="frManagementSummary" NavigationUIVisibility="Hidden" Margin="10 0 0 0" ></Frame>
+
+                            </TabItem>
+                        <TabItem Width="200" Padding="5 5 5 5" x:Name="tabManagementUsers">
+                                <TabItem.Header>
+                                    <TextBlock FontWeight="Bold" FontSize="15">UŽIVATELÉ</TextBlock>
+                                </TabItem.Header>
+                            <Frame x:Name="frManagementUsers" NavigationUIVisibility="Hidden" Margin="10 0 0 0" ></Frame>
+                            </TabItem>
+                        <TabItem  Width="200" Padding="5 5 5 5" x:Name="tabManagementCoInfo">
+                                <TabItem.Header>
+                                    <TextBlock FontWeight="Bold" FontSize="15">INFORMACE O PODNIKU</TextBlock>
+                                </TabItem.Header>
+                            <Frame x:Name="frManagementCoInfo" NavigationUIVisibility="Hidden"  Margin="10 0 0 0"></Frame>
+                        </TabItem>
+                        </TabControl>
+
+                    </Grid>
+            
+
+            </TabItem>
+
+            <TabItem x:Name="tabProfile" FontSize="15">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+
+                        <Image Source="Images/userProfileIcon.png"  Width="20" Height="20"  />
+                        <Label Content="Profil" FontSize="17" FontWeight="DemiBold" />
+                    </StackPanel>
+                </TabItem.Header>
+
+                <Grid Background="White">
+                    <TabControl BorderThickness="1 0 0 0" Background="White" BorderBrush="Gray" Padding="5 5 5 5" TabStripPlacement="Left" Margin="10 10 10 0" x:Name="tabControlProfile" SelectionChanged="tabControlProfile_SelectionChanged">
+                        <TabItem Width="200" Padding="5 5 5 5" x:Name="tabProfileSummary">
+                            <TabItem.Header>
+                                <TextBlock FontWeight="Bold" FontSize="15">PŘEHLED</TextBlock>
+                            </TabItem.Header>
+
+                            
+                                <Frame x:Name="frSummary" NavigationUIVisibility="Hidden" Margin="10 0 0 0"></Frame>
+
+
+                            
+
+                        </TabItem>
+                        <TabItem Width="200" Padding="5 5 5 5" x:Name="tabProfilePswdChange">
+                            <TabItem.Header>
+                                <TextBlock FontWeight="Bold" FontSize="15">NASTAVENÍ ÚČTU</TextBlock>
+                            </TabItem.Header>
+                            <Frame x:Name="frPasswordChange" NavigationUIVisibility="Hidden" Margin="10 0 0 0"></Frame>
+                        </TabItem>
+                        <TabItem  Width="200" Padding="5 5 5 5" x:Name="tabProfileOtherOptions">
+                            <TabItem.Header>
+                                <TextBlock FontWeight="Bold" FontSize="15">DALŠÍ MOŽNOSTI</TextBlock>
+                            </TabItem.Header>
+                            <Frame x:Name="frOtherOptions" NavigationUIVisibility="Hidden" Margin="10 0 0 0" ></Frame>
+                        </TabItem>
+                    </TabControl>
+
+                </Grid>
+
+            </TabItem>
+
+
+        </TabControl>
+
+        <Rectangle Fill="#FF555555" Grid.Column="0" Grid.Row="2" Margin="0 0 0 0 " Grid.ColumnSpan="2"></Rectangle>
+        <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" >
+
+
+            <Label x:Name="lblUsername" Foreground="White" Content="Nepřihlášený uživatel"></Label>
+
+        </StackPanel>
+    </Grid>
+</Window>

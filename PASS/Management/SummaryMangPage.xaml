@@ -1,0 +1,62 @@
+﻿<Page x:Class="PASS.Management.SummaryMangPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PASS.Management"
+      mc:Ignorable="d"     
+      Title="SummaryMangPage">
+    
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="90"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="auto" ></RowDefinition>
+
+            </Grid.RowDefinitions>
+            <Label Content="Přehled managementu" Style="{StaticResource labelHeaderStyle}" Grid.Row="0"></Label>
+            <Label Style="{StaticResource labelH2}" Content="Statistiky" Grid.Row="1" Margin="10 10 10 0" x:Name="lblDatabase"></Label>
+            <StackPanel Grid.Row="2" Style="{StaticResource stackPanelStyle}" MaxWidth="500" HorizontalAlignment="Left" Width="{Binding ElementName=lblDatabase,Path=ActualWidth}">
+
+                <DockPanel>
+                    <Label Content="Celkový počet produktů na skladě:" Width="250" FontWeight="Medium"></Label>
+                    <Label Content="0" x:Name="lbProductsNumber"></Label>
+                </DockPanel>
+                <DockPanel>
+                    <Label Content="Celkový počet uživatelů:" Width="250" FontWeight="Medium"></Label>
+                    <Label Content="0" x:Name="lbUsersNumber"></Label>
+                </DockPanel>
+            </StackPanel>
+
+
+            <DataGrid x:Name="dgBills" Grid.Row="4" Style="{StaticResource dataGridStyle}" AutoGenerateColumns="False" Margin="10 0 10 0" CellStyle="{StaticResource datagridCell}" MouseDoubleClick="dgBills_MouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding FileName}" Header="Označení účtenky" Width="auto"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding CreationTime}" Header="Datum vytvoření"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+
+            <Label Content="Účtenky" Style="{StaticResource labelH2}" Grid.Row="3" Margin="10 0 10 10" ></Label>
+            <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelStyle}"  Grid.Row="4" Margin="0 0 0 0">
+                <DockPanel>
+                    <Label x:Name="lblMessage" Visibility="Collapsed" Content="Žádné účtenky nejsou k dispozici." Margin="10 0 10 0"></Label>
+                </DockPanel>
+
+            </StackPanel>
+            <Label Content="Seznam operací" Grid.Row="5" Style="{StaticResource labelH2}" Margin="10 10 10 0"></Label>
+            <StackPanel Style="{StaticResource stackPanelStyle}" Grid.Row="6">
+                <WrapPanel>
+                    <Button Margin="5 5 5 5" Content="Odebrat účtenku" Style="{StaticResource buttonStyle}" Width="200" x:Name="btnBillDelete" Click="btnBillDelete_Click" IsEnabled="{Binding ElementName=dgBills,Path=SelectedItems.Count}"></Button>
+                    <Button Margin="5 5 5 5" Content="Odebrat všechny účtenky" Style="{StaticResource buttonStyle}" Width="200" x:Name="btnDeleteAllBill" Click="btnDeleteAllBill_Click" IsEnabled="{Binding ElementName=dgBills,Path=Items.Count}"></Button>
+                <Button Margin="5 5 5 5" Content="Uložit účtenku jako XML ..." Style="{StaticResource buttonStyle}" Width="200" x:Name="btnSaveBill" Click="btnSaveBill_Click" IsEnabled="{Binding ElementName=dgBills,Path=SelectedItems.Count}"></Button>
+                </WrapPanel>
+            </StackPanel>
+        </Grid>
+   
+</Page>

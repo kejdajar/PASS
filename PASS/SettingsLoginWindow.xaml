@@ -1,0 +1,25 @@
+﻿<Window x:Class="PASS.SettingsLoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PASS"
+        mc:Ignorable="d"
+        Title="Nastavení" SizeToContent="WidthAndHeight" ResizeMode="NoResize" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Style="{StaticResource labelH2}" Content="Přihlášení správce" Grid.Row="0"></Label>
+        <StackPanel Style="{StaticResource stackPanelStyle}" Width="350" Grid.Row="1" Height="80" >
+            <DockPanel>
+                <Label Content="Heslo" Width="120"></Label>
+                <PasswordBox x:Name="tbPswd"></PasswordBox>
+            </DockPanel>
+            <DockPanel>
+                <Button Style="{StaticResource buttonStyle}" Content="Přihlásit" IsDefault="True" x:Name="btnLogin" Click="btnLogin_Click"></Button>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Window>

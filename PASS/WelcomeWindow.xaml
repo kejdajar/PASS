@@ -1,0 +1,50 @@
+﻿<Window x:Class="PASS.WelcomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PASS"
+        mc:Ignorable="d"
+        Title="PASS - Pokladní a skladový systém" Height="565" Width="710" Closed="Window_Closed" ShowInTaskbar="False" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="#FFECECEC" Grid.Column="1"></Rectangle>
+        <StackPanel Style="{StaticResource stackPanelStyle}" Grid.Column="0">
+            <Image Source="Images/passLogo2.png"  Width="300" Margin="0 10 0 0"/>
+            <Label Content="PASS - Pokladní a skladový systém" HorizontalAlignment="Center" FontWeight="SemiBold" Margin="0 0 0 5"/>
+            
+            <Label Content="Vítejte" Style="{StaticResource labelH2}"></Label>
+            <TextBlock Margin="0 10 0 10" Text="Něž budete moci začít používat tento produkt, je potřeba provést některá nastavení." TextWrapping="Wrap" />
+            <Label Content="Heslo správce programu" Style="{StaticResource labelH2}"></Label>
+            <TextBlock Margin="0 10 0 10" Text="Správce je osoba, která má pro tuto aplikací neomezená práva přístupu k nastavení programu. Správce provádí dodatečná nastavení aplikace a nastavuje přístup k databázi." TextWrapping="Wrap"  />
+            
+            <TextBlock Text="Nové heslo správce:"></TextBlock>
+                <PasswordBox x:Name="pbAdminPswd" Margin="0 5 0 5" ></PasswordBox>
+            <TextBlock Text="Heslo znovu:"></TextBlock>
+            <PasswordBox x:Name="pbAdminPswdAgain" Margin="0 5 0 5" ></PasswordBox>
+            <Button x:Name="btnSubmit"  Content="Potvrdit nastavení a spustit aplikaci"  Style="{StaticResource buttonStyle}" Click="btnSubmit_Click" IsDefault="True"></Button>
+            <Button x:Name="btnAbout"  Content="Informace o aplikaci"  Style="{StaticResource buttonStyle}" Margin="0 5 0 5" Click="btnAbout_Click"></Button>
+            
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Style="{StaticResource stackPanelStyle}" >
+            <Label Content="Důležité informace" FontWeight="SemiBold" FontSize="15" FontStyle="Italic"></Label>
+            <TextBlock Margin="0 10 0 10" Text="Při prvním spuštění je vytvořena na počítači místní databáze a je naplněna ukázkovými daty, a proto není nutné mít nainstalován plnohodnotný databázový MSSQL Server." TextWrapping="Wrap"  />
+            <TextBlock Margin="0 10 0 10" Text="Pro připojení do ukázkové databáze jsou vyhrazeny toto přihlašovací údaje*:" TextWrapping="Wrap"  />
+            <Separator></Separator>
+            <Label Content="ROLE MANAŽER:"></Label>
+            <Label Content="Login: manažer, Heslo: manažer"></Label>
+            <Separator></Separator>
+            <Label Content="ROLE SKLADNÍK:"></Label>
+            <Label Content="Login: skladník, Heslo: skladník"></Label>
+            <Separator></Separator>
+            <Label Content="ROLE POKLADNÍ:"></Label>
+            <Label Content="Login: pokladní, Heslo: pokladní"></Label>
+            <Separator></Separator>
+            <TextBlock Margin="0 10 0 10" Text="* Všechny role, uživatelská jména a hesla je možné později upravit." TextWrapping="Wrap"  FontStyle="Italic" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,29 @@
+﻿<Window x:Class="PASS.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PASS"
+        mc:Ignorable="d"
+        Title="" SizeToContent="WidthAndHeight" AllowsTransparency="True" Background="Transparent" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Background="White" Grid.Column="0" Grid.Row="0" BorderBrush="Black" BorderThickness="2" CornerRadius="10">            
+        </Border>
+        <StackPanel Grid.Column="0" Grid.Row="0" Style="{StaticResource stackPanelStyle}">
+            <Image Source="Images/passLogo2.png"  Width="300" Margin="0 10 0 10"/>
+            <Label Content="PASS - Pokladní a skladový systém" />
+            <Label Content="Verze: 1.0.0" />
+            <Label Content="Autor: Jaromír Kejda" />
+            <Separator></Separator>
+            <Label Content="Popis projektu: " />
+            <TextBlock Margin="10 10 10 10" Text="Projekt je součástí bakalářské práce: Prostředky platformy .NET pro zpracování dat a zajištění datové perzistence." TextWrapping="Wrap" MaxWidth="350" />
+            <Button x:Name="btnAboutClose" Click="btnAboutClose_Click" Content="Zavřít" Width="200" Style="{StaticResource buttonStyle}"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Database" Class="LinqToSqlDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\kejda\AppData\Roaming\PASS\AppData\Database.mdf;Integrated Security=True" SettingsObjectName="PASS.Properties.Settings" SettingsPropertyName="DatabaseConnectionString3" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Bill" Member="Bills">
+    <Type Name="Bill">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="billText" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="Company_Bill" Member="Company" ThisKey="id" OtherKey="id" Type="Company" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Vat" Member="Vats">
+    <Type Name="Vat">
+      <Column Name="id" Type="System.Char" DbType="NChar(1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="rate" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Vat_Product" Member="Products" ThisKey="id" OtherKey="vatId" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Company" Member="Companies">
+    <Type Name="Company">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="adress" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="postalCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="web" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Association Name="Company_Bill" Member="Bill" ThisKey="id" OtherKey="id" Type="Bill" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ImagesTable" Member="ImagesTables">
+    <Type Name="ImagesTable">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="img" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="ImagesTable_ProductImage" Member="ProductImages" ThisKey="id" OtherKey="idImage" Type="ProductImage" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProductImages" Member="ProductImages">
+    <Type Name="ProductImage">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idProduct" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idImage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ImagesTable_ProductImage" Member="ImagesTable" ThisKey="idImage" OtherKey="id" Type="ImagesTable" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Product_ProductImage" Member="Product" ThisKey="idProduct" OtherKey="id" Type="Product" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Products" Member="Products">
+    <Type Name="Product">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="unit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="unitQuantity" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="expirationDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="priceForUnit" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="vatId" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
+      <Association Name="Product_ProductImage" Member="ProductImages" ThisKey="id" OtherKey="idProduct" Type="ProductImage" />
+      <Association Name="Vat_Product" Member="Vat" ThisKey="vatId" OtherKey="id" Type="Vat" IsForeignKey="true" />
+      <Association Name="Unit_Product" Member="Unit1" ThisKey="unit" OtherKey="id" Type="Unit" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Units" Member="Units">
+    <Type Name="Unit">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(40) NOT NULL" CanBeNull="false" />
+      <Association Name="Unit_Product" Member="Products" ThisKey="id" OtherKey="unit" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserRoles" Member="UserRoles">
+    <Type Name="UserRole">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(40) NOT NULL" CanBeNull="false" />
+      <Association Name="UserRole_User" Member="Users" ThisKey="id" OtherKey="userRole" Type="User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="pswd" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="salt" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="userRole" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="UserRole_User" Member="UserRole1" ThisKey="userRole" OtherKey="id" Type="UserRole" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Orders" Member="Orders">
+    <Type Name="Order">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="paid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="staff" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="timeOfTransaction" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="companyName" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="companyAdress" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="companyCity" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="companyPostalCode" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="companyPhone" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="companyWeb" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="billText" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="vatSum" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="vatSumSingle" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="totalShoppingCartPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="change" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Association Name="Order_OrderItem" Member="OrderItems" ThisKey="id" OtherKey="orderId" Type="OrderItem" />
+      <Association Name="Order_OrderItemsVat" Member="OrderItemsVats" ThisKey="id" OtherKey="orderId" Type="OrderItemsVat" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OrderItems" Member="OrderItems">
+    <Type Name="OrderItem">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="orderId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="unit" Type="System.String" DbType="NChar(40)" CanBeNull="true" />
+      <Column Name="unitQuantity" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="expirationDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="priceForUnit" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="vatId" Type="System.Char" DbType="NChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="totalPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Association Name="Order_OrderItem" Member="Order" ThisKey="orderId" OtherKey="id" Type="Order" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OrderItemsVat" Member="OrderItemsVats">
+    <Type Name="OrderItemsVat">
+      <Column Name="orderId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="vatId" Type="System.Char" DbType="NChar(1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="percentageLabel" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+      <Column Name="vatValue" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="vatValueProducts" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Association Name="Order_OrderItemsVat" Member="Order" ThisKey="orderId" OtherKey="id" Type="Order" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+</Database>

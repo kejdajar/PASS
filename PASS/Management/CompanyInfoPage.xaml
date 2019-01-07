@@ -1,0 +1,66 @@
+﻿<Page x:Class="PASS.Management.CompanyInfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PASS.Management"
+      mc:Ignorable="d"     x:Name="page1"  
+      Title="CompanyInfoPage">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition  MinHeight="280" MaxHeight="270"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+       
+          <Label Content="Informace o podniku" Style="{StaticResource labelHeaderStyle}" Grid.Row="0" >   </Label>
+        <Label Content="Kontaktní údaje" Style="{StaticResource labelH2}" Grid.Row="1" Margin="10 10 10 0" x:Name="lb1"></Label>
+  <StackPanel Orientation="Vertical" Style="{StaticResource stackPanelStyle}"  Grid.Row="2" HorizontalAlignment="Left" MaxWidth="500" Width="{Binding ElementName=lb1,Path=ActualWidth}">
+            <DockPanel>
+               
+            </DockPanel>
+         
+            <DockPanel>
+                <Label Width="120" Content="Název podniku *"></Label>
+                <TextBox x:Name="tbCompanyName" ></TextBox>
+            </DockPanel>
+            <DockPanel>
+                <Label Content="Adresa" Width="120"></Label>
+                <TextBox x:Name="tbCompanyAdress"></TextBox>
+            </DockPanel>
+            <DockPanel>
+                <Label Content="Město" Width="120"></Label>
+                <TextBox x:Name="tbCompanyCity"></TextBox>
+            </DockPanel>
+            <DockPanel>
+                <Label Content="PSČ" Width="120"></Label>
+                <TextBox x:Name="tbCompanyPostalCode"></TextBox>
+            </DockPanel>
+            <DockPanel>
+                <Label Content="Telefon" Width="120"></Label>
+                <TextBox x:Name="tbCompanyPhone"></TextBox>
+            </DockPanel>
+            <DockPanel>
+                <Label Content="Web" Width="120"></Label>
+                <TextBox x:Name="tbCompanyWebSite"></TextBox>
+            </DockPanel>
+            <DockPanel>
+                    <Label Content="* povinný údaj" Width="120" HorizontalAlignment="Left" FontStyle="Italic"></Label>
+            </DockPanel>
+               </StackPanel>
+        <Label Content="Nastavení účtenky" Style="{StaticResource labelH2}" Grid.Row="3" Margin="10 0 10 0" ></Label>
+        <StackPanel Grid.Row="4" Style="{StaticResource stackPanelStyle}" HorizontalAlignment="Left" MaxWidth="500" Width="{Binding ElementName=lb1,Path=ActualWidth}">
+                <DockPanel>
+                <Label Content="Text na účtence" Width="120"></Label>
+                <TextBox x:Name="tbBillText"></TextBox>
+            </DockPanel>
+            <DockPanel>
+            <Button x:Name="btnSubmit" Content="Uložit změny" Click="btnSubmit_Click" Style="{StaticResource buttonStyle}"></Button>
+            </DockPanel>
+        </StackPanel>
+    </Grid></ScrollViewer>
+</Page>

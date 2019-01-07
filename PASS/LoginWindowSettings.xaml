@@ -1,0 +1,68 @@
+﻿<Window x:Class="PASS.LoginWindowSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PASS"
+        mc:Ignorable="d"
+        Title="PASS - Nastavení"  ResizeMode="NoResize" SizeToContent="WidthAndHeight" FontSize="14" FontFamily="Segoe UI">
+    <Grid>
+        <StackPanel Orientation="Vertical" Width="450" Margin="10 10 10 10">
+            <Label  Content="Nastavení" Style="{StaticResource labelH2}"></Label>
+            
+            
+            
+            <StackPanel Orientation="Horizontal" Margin="0 15 0 0" Background="#FFE3ECEE">
+                <RadioButton  Content="Použít lokální databázový soubor - LocalDb" x:Name="chb1"  FontSize="15" GroupName="g1" Margin="0 0 0 5" ></RadioButton>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" IsEnabled="{Binding ElementName=chb1,Path=IsChecked}" >
+
+                <DockPanel>
+                    <Label Content="Připojovací řetězec k databázi" HorizontalAlignment="Center" FontStyle="Italic" FontSize="11"></Label>
+
+                </DockPanel>
+                <DockPanel Margin="0 0 0 5">
+                    <TextBox x:Name="tbConnString"  Width="350" Margin="0 0 5 0" AcceptsReturn="True" TextWrapping="Wrap" MaxHeight="60"></TextBox>
+                    <Button x:Name="btnSearch" Click="btnSearch_Click" Content="Procházet ..." Style="{StaticResource buttonStyle}"></Button>
+                </DockPanel>
+                <DockPanel Margin="0 0 0 5">
+                    <Button x:Name="btnTestConnection" Click="btnTestConnection_Click" Content="Zvolit databázi" Style="{StaticResource buttonStyle}" IsEnabled="{Binding ElementName=tbConnString,Path=Text.Length}"></Button>
+                 
+                </DockPanel>
+                <DockPanel>
+                    <Button Content="Vytvořit novou místní databázi" Style="{StaticResource buttonStyle}" x:Name="btnNewLocalDb" Click="btnNewLocalDb_Click"></Button>
+                </DockPanel>
+            </StackPanel>
+            <StackPanel Background="#FFE3ECEE" Margin="0 15 0 0">
+                <RadioButton Content="Instance MSSQL databáze" x:Name="chb2"  GroupName="g1" Margin="0 0 0 5" FontSize="15"></RadioButton>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" IsEnabled="{Binding ElementName=chb2,Path=IsChecked}" >
+                <DockPanel>
+                    <Label Content="Připojovací řetězec k databázi"  HorizontalAlignment="Center" FontStyle="Italic" FontSize="11"></Label>
+
+                </DockPanel>
+                <DockPanel>
+                    <TextBox x:Name="tbConnString2" Margin="0 0 0 5" AcceptsReturn="True" TextWrapping="Wrap" MaxHeight="60"></TextBox>
+                </DockPanel>
+                <DockPanel>
+                    <Button x:Name="btnTestConnection2" Click="btnTestConnection2_Click"  Content="Zvolit databázi" Style="{StaticResource buttonStyle}" IsEnabled="{Binding ElementName=tbConnString2,Path=Text.Length}"></Button>
+
+                </DockPanel>
+                <DockPanel/>
+                <DockPanel/>
+
+
+            </StackPanel>
+            <StackPanel>
+                <DockPanel  Margin="0 10 0 5">
+
+                    <Label Content="Reset aplikace" Style="{StaticResource labelH2}"></Label>
+                </DockPanel>
+                <DockPanel>
+                    <Button Style="{StaticResource buttonStyle}" Content="Ukončit program a resetovat všechna nastavení" ToolTip="Uložená databázová data a účtenky budou smazány až po potvrzení při dalším spuštění programu." x:Name="btnReset" Click="btnReset_Click"></Button>
+                </DockPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
