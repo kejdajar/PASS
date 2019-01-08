@@ -49,7 +49,7 @@ Aplikace PASS je pokladní a skladový systém, publikovaný jako součást baka
 
 ## Nasazení aplikace
 
-__Pokladní a skladový systém PASS je studentský projekt, který není určený k nasazení do provozu.__ Aplikace byla vytvářena ještě před zavedením elektronické evidence tržeb, a proto nepodporuje tuto funkcionalitu. Z tohoto důvodu není vhodná pro nasazení tam, kde je vyžadována integrace s EET. Dále není podporována platba kartou ani čtečka čárových kódů zboží.
+__Pokladní a skladový systém PASS je studentský projekt, který není určený k nasazení do provozu a není ani dále aktivně rozvíjen.__ Aplikace byla vytvářena ještě před zavedením elektronické evidence tržeb, a proto nepodporuje tuto funkcionalitu. Z tohoto důvodu není vhodná pro nasazení tam, kde je vyžadována integrace s EET. Dále není podporována platba kartou ani čtečka čárových kódů zboží.
 
 <p float="left">   
   <img  src="https://github.com/kejdajar/PASS/blob/master/resources/instalace.jpg" width="32%"  />    
