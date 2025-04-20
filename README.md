@@ -1,5 +1,7 @@
 # PASS - Pokladní a skladový systém
-Aplikace PASS je pokladní a skladový systém, publikovaný jako součást bakalářské práce na ČZU na téma: *Prostředky platformy .NET pro zpracování dat a zajištění datové perzistence*. Jelikož byl redakční systém publikován jako akademická práce, je volně dostupný veřejnosti. Systém PASS je desktopová aplikace pro operační systém Windows, využívající .NET Framework a technologii WPF. Dodatečnou dokumentaci lze nalézt v rámci mé bakalářské práce na <a href="https://jaromirkejda.net/pass" title="Jaromír Kejda"> jaromirkejda.net/pass</a>.
+**Disclaimer:** _This repository has been archived and is no longer actively maintained. No future updates, fixes, or support will be provided._ 
+
+Aplikace PASS je pokladní a skladový systém, publikovaný jako součást bakalářské práce na ČZU na téma: *Prostředky platformy .NET pro zpracování dat a zajištění datové perzistence*. Jelikož byl redakční systém publikován jako akademická práce, je volně dostupný veřejnosti. Systém PASS je desktopová aplikace pro operační systém Windows, využívající .NET Framework a technologii WPF.
 
 ## Features:
 * přehled jednotlivých skladových položek
